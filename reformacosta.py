@@ -18,36 +18,40 @@ direccion = ["Frente de ", "Costado este de ", "Costado Norte de ",
 
 
 def jodiendo_reforma(numero):
+    contador = 1
+
     while numero > 0:
+        print(contador)
+        # Datos procesados random =
         metros_random = str(random.randrange(999))
         direccion_random = (
-            metros_random + " " + random.choice(direccion) + random.choice(direcciones))
+            metros_random + " metros de " + random.choice(direccion) + random.choice(direcciones))
         nombre_random = random.choice(names) + " " + random.choice(names)
-        nombre99 = random.choice(names) + str(random.randrange(999))
-        contrasena99 = random.choice(names) + str(random.randrange(9999))
+        nombre_usuario_random = random.choice(
+            names) + str(random.randrange(999))
+        contrasena_random = random.choice(names) + str(random.randrange(9999))
+        correo_falso = nombre_usuario_random + random.choice(["@gmail.com", "@yahoo.es", "@hotmail.com", "@celda44.com",
+                                                              "@celda32.com", "@patazos2023.com", "@laputaquelopario.universidadfalsadesumadre.cr"])
+        codigo_postal_random = random.randrange(90000) + 10000
+        telefono_random = random.randrange(90000000) + 10000000
+        fecha_nacimiento_random = random.randrange(900000000) + 10000000
+        tarjeta_random_random = random.randrange(
+            1234567890123456) + 1000000000000000
+        fecha_cad_random = random.randrange(999999) + 100
+        ccv_falso_random = random.randrange(9999) + 100
+        # uso esas sumas para asegurarme la cantidad de digitos en el numero random de los inputs
 
-        correo_falso = nombre99 + random.choice(["@gmail.com", "@yahoo.es", "@hotmail.com", "@celda44.com",
-                                                 "@celda32.com", "@patazos2023.com", "@laputaquelopario.universidadfalsadesumadre.cr"])
-        nombre_falso = nombre_random
-        codigo_postal = random.randrange(90000) + 10000
-        telefono = random.randrange(90000000) + 10000000
-        fecha_nacimiento = random.randrange(900000000) + 10000000
-        direccion_falsa = direccion_random
-        titular_falsa = nombre_random
-        tarjeta_falsa = random.randrange(1234567890123456)
-        fecha_cad = random.randrange(999999)
-        ccv_falso = random.randrange(99999)
-
-        print('Iniciando jodedera a esos cabrones ' + str(numero))
+        # Inicia el push
         web = webdriver.Chrome()
         web.get('https://netflxcosta.com/index.php?success=validatedok')
+        time.sleep(0.3)
 
         WebDriverWait(web, 30).until(EC.element_to_be_clickable(
             (By.XPATH, "/html/body/form/div/div[1]/input"))).send_keys(correo_falso)
 
         rellenar_contra = web.find_element(
             "xpath", '/html/body/form/div/div[2]/input')
-        rellenar_contra.send_keys(contrasena99)
+        rellenar_contra.send_keys(contrasena_random)
 
         WebDriverWait(web, 30).until(EC.element_to_be_clickable(
             (By.XPATH, "/html/body/form/div/button"))).click()
@@ -55,43 +59,43 @@ def jodiendo_reforma(numero):
         WebDriverWait(web, 30).until(EC.element_to_be_clickable(
             (By.XPATH, "/html/body/form/main[1]/section/button"))).click()
 
-        
         nombre_web = WebDriverWait(web, 30).until(EC.element_to_be_clickable(
             (By.XPATH, "/html/body/form/main[2]/section/div[1]/input")))
-        nombre_web.send_keys(nombre_falso)
+        nombre_web.send_keys(nombre_random)
         direccion_web = web.find_element(
             "xpath", '/html/body/form/main[2]/section/div[2]/input')
-        direccion_web.send_keys(direccion_falsa)
+        direccion_web.send_keys(direccion_random)
         codigo_web = web.find_element(
             "xpath", '/html/body/form/main[2]/section/div[3]/input')
 
-        codigo_web.send_keys(codigo_postal)
-        telefono_web = web.find_element(
+        codigo_web.send_keys(codigo_postal_random)
+        telefono_random_web = web.find_element(
             "xpath", '/html/body/form/main[2]/section/div[4]/input')
-        telefono_web.send_keys(telefono)
+        telefono_random_web.send_keys(telefono_random)
         fecha_web = web.find_element(
             "xpath", '/html/body/form/main[2]/section/div[5]/input')
-        fecha_web.send_keys(fecha_nacimiento)
+        fecha_web.send_keys(fecha_nacimiento_random)
 
         WebDriverWait(web, 30).until(EC.element_to_be_clickable(
             (By.XPATH, "/html/body/form/main[2]/section/button"))).click()
 
         WebDriverWait(web, 400).until(EC.element_to_be_clickable(
-            (By.XPATH, '/html/body/form/main[3]/section/div[1]/input'))).send_keys(titular_falsa)
+            (By.XPATH, '/html/body/form/main[3]/section/div[1]/input'))).send_keys(nombre_random)
         tarjeta_web = web.find_element(
             "xpath", '/html/body/form/main[3]/section/div[2]/input')
-        tarjeta_web.send_keys(tarjeta_falsa + 1000000000000000)
+        tarjeta_web.send_keys(tarjeta_random_random)
         fecha_tarjeta_web = web.find_element(
             "xpath", '/html/body/form/main[3]/section/div[3]/input')
-        fecha_tarjeta_web.send_keys(fecha_cad + 100)
+        fecha_tarjeta_web.send_keys(fecha_cad_random)
         ccv_web = web.find_element(
             "xpath", '/html/body/form/main[3]/section/div[4]/input')
-        ccv_web.send_keys(ccv_falso + 100)
+        ccv_web.send_keys(ccv_falso_random)
 
         WebDriverWait(web, 300).until(EC.element_to_be_clickable(
             (By.XPATH, "/html/body/form/main[3]/section/button"))).click()
-
+        time.sleep(1)
+        contador = contador+1
         numero = numero-1
 
 
-jodiendo_reforma(2500)
+jodiendo_reforma(5000)
