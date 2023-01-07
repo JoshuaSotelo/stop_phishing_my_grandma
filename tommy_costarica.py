@@ -4,7 +4,7 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import Select
+from selenium.common.exceptions import WebDriverException 
 
 # ------------ Tienen que instalar Selenium con pip3
 # Lista de Nombres Falsos para introducir en los  Forms
@@ -104,27 +104,34 @@ def jodiendo_tommy_costa(numero, cantidadArticulos):
 
         cantidadArticulosRandom = random.randint(1,cantidadArticulos);
 
-        # Prueba para el pago de tarjeta y hacer el pedido.
-        for x in range(cantidadArticulosRandom):             
-            web.get('https://www.tommyhilfigercostaricas.com/')
-            time.sleep(0.9)
-            divPrincipalcarrusel_random = random.choice(divPrincipalcarrusel);
 
-            # Boton de carrusel del 1 al 12 random
-            WebDriverWait(web, 30).until(EC.element_to_be_clickable(
-            (By.XPATH, "/html/body/div[1]/div[9]/div/div[1]/div/div[2]/div[1]/div[1]/a/img"))).click() 
-            #(By.XPATH, "/html/body/div[1]/div[9]/div/div[1]/div/div[2]/div["+ str(divPrincipalcarrusel_random)+"]/div[1]/a/img"))).click() 
-            time.sleep(0.3)
+        try:
+            # Prueba para el pago de tarjeta y hacer el pedido.
+            for x in range(cantidadArticulosRandom):             
+                web.get('https://www.tommyhilfigercostaricas.com/')
+                time.sleep(0.9)
+                divPrincipalcarrusel_random = random.choice(divPrincipalcarrusel);
 
-            # Talla
-            WebDriverWait(web, 30).until(EC.element_to_be_clickable(
-            (By.XPATH, "/html/body/div[1]/div[10]/div[1]/div/div[1]/div[1]/form/div[2]/div[2]/div[4]/div[2]/ul/li[1]"))).click() 
+                # Boton de carrusel del 1 al 12 random
+                WebDriverWait(web, 30).until(EC.element_to_be_clickable(
+                (By.XPATH, "/html/body/div[1]/div[9]/div/div[1]/div/div[2]/div[1]/div[1]/a/img"))).click() 
+                #(By.XPATH, "/html/body/div[1]/div[9]/div/div[1]/div/div[2]/div["+ str(divPrincipalcarrusel_random)+"]/div[1]/a/img"))).click() 
+                time.sleep(0.9)
+            
+                # Talla, controlar error cuando quitan inventario.
+                WebDriverWait(web, 30).until(EC.element_to_be_clickable(
+                (By.XPATH, "/html/body/div[1]/div[10]/div[1]/div/div[1]/div[1]/form/div[2]/div[2]/div[4]/div[2]/ul/li[1]"))).click()         
+      
 
             # Boton agregar canasta
             WebDriverWait(web, 30).until(EC.element_to_be_clickable(
             (By.XPATH, "/html/body/div[1]/div[10]/div[1]/div/div[1]/div[1]/form/div[2]/div[2]/div[4]/div[3]/div[2]"))).click() 
             time.sleep(0.4)
          
+        except:
+            print ("Element is not clickable, si quitan el inventario de productos que controle el error y comience nuevamente")
+            jodiendo_tommy_costa(numero, cantidadArticulos)
+
           
         time.sleep(0.4)
         #Boton de carrito para pagar
@@ -168,4 +175,4 @@ def jodiendo_tommy_costa(numero, cantidadArticulos):
 
 
 
-jodiendo_tommy_costa(500,1)
+jodiendo_tommy_costa(5000,1)
