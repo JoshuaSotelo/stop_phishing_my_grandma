@@ -21,8 +21,6 @@ direccion = ["Frente de ", "Costado este de ", "Costado Norte de ",
              "Costado Sur de", "Costado oeste de ", "diagonal de ", "Sobre calle ", "Atras de "]
 ciudades = ["Alajuela", "Su Madre", "San Jose", "Rico vivir en la carcel", "Te Van a Atrapar"]
 
-
-
 comentarios = ["la casa de su madre maldito ladron", "la casa de su esposa que no solo goza en visita conyugal", "celda 12",
                "Somo la FBI, abra la puerta!", "FBI OPEN UP", "Arsehole", "Gannet Bastard", "Gone to the dogs"]
 
@@ -38,24 +36,12 @@ def jodiendo_future_chat(numero, cantidadArticulos):
         contador += 1
         print(contador)
         # Datos procesados random.
-        metros_random = str(random.randrange(999))
-        direccion_random = (
-            metros_random + " metros de " + random.choice(direccion) + random.choice(direcciones))
-        ciudad_random = random.choice(ciudades)
         nombre_random = random.choice(names)
-        apellido_random = random.choice(names)
         nombre_usuario_random = random.choice(
             names) + str(random.randrange(999))
-        contrasena_random = random.choice(names) + str(random.randrange(9999))
         correo_falso = nombre_usuario_random + random.choice(["@gmail.com", "@yahoo.es", "@hotmail.com", "@celda44.com",
                                                               "@celda32.com", "@patazos2023.com", "@laputaquelopario.universidadfalsadesumadre.cr"])
-        codigo_postal_random = random.randrange(90000) + 10000
-        telefono_random = random.randrange(90000000) + 10000000
-        fecha_nacimiento_random = random.randrange(900000000) + 10000000
-        tarjeta_random_random = random.randrange(
-            1234567890123456) + 1000000000000000
-        fecha_cad_random = random.randrange(999999) + 100
-        ccv_falso_random = random.randrange(9999) + 100      
+    
         # uso esas sumas para asegurarme la cantidad de digitos en el numero random de los inputs
         # Inicia el push
         web = webdriver.Chrome()
