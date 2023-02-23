@@ -31,7 +31,7 @@ divPrincipalcarrusel = [1,2,3,4,5]
 
 contador = 1
 
-def jodiendo_tommy_costa(numero, cantidadArticulos):
+def jodiendo_future_chat(numero, cantidadArticulos):
     global contador  
 
     while numero >= contador:
@@ -164,4 +164,4 @@ def jodiendo_tommy_costa(numero, cantidadArticulos):
         time.sleep(1) 
 
 
-jodiendo_tommy_costa(5000,1)
+jodiendo_future_chat(5000,1)
