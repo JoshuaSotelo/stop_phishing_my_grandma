@@ -33,44 +33,48 @@ def jodiendo_future(numero):
     while numero >= contador:
         contador += 1
         print(contador)
-        nombre_usuario_random = random.choice(
-            names) + str(random.randrange(999))
-        contrasena_random = random.choice(names) + str(random.randrange(9999))
-        correo_falso = nombre_usuario_random + random.choice(["@gmail.com", "@yahoo.es", "@hotmail.com", "@celda44.com",
-                                                              "@celda32.com", "@patazos2023.com", "@laputaquelopario.universidadfalsadesumadre.cr"])
- 
-        telefono_random = random.randrange(90000000) + 10000000
-   
-        # Inicia el push
-        web = webdriver.Chrome()
-        # Formulario de registro
-        web.get(sitio)
-        time.sleep(0.8)  
-                  
-        rellenar_correo = web.find_element(
-            "xpath", '/html/body/div[1]/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/form/div[1]/div[2]/div/input')
-        rellenar_correo.send_keys(correo_falso)     
 
-        rellenar_telefono = web.find_element(
-            "xpath", '/html/body/div[1]/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/form/div[3]/div[2]/div/input')
-        rellenar_telefono.send_keys(telefono_random)
+        try:
+            nombre_usuario_random = random.choice(
+                names) + str(random.randrange(999))
+            contrasena_random = random.choice(names) + str(random.randrange(9999))
+            correo_falso = nombre_usuario_random + random.choice(["@gmail.com", "@yahoo.es", "@hotmail.com", "@celda44.com",
+                                                                "@celda32.com", "@patazos2023.com", "@laputaquelopario.universidadfalsadesumadre.cr"])
+    
+            telefono_random = random.randrange(90000000) + 10000000
+    
+            # Inicia el push
+            web = webdriver.Chrome()
+            # Formulario de registro
+            web.get(sitio)
+            time.sleep(0.8)  
+                    
+            rellenar_correo = web.find_element(
+                "xpath", '/html/body/div[1]/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/form/div[1]/div[2]/div/input')
+            rellenar_correo.send_keys(correo_falso)     
 
-        rellenar_contrasenna= web.find_element(
-            "xpath", '/html/body/div[1]/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/form/div[4]/div[2]/div/input')
-        rellenar_contrasenna.send_keys(contrasena_random)
+            rellenar_telefono = web.find_element(
+                "xpath", '/html/body/div[1]/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/form/div[3]/div[2]/div/input')
+            rellenar_telefono.send_keys(telefono_random)
 
-        rellenar_contrasenna2= web.find_element(
-            "xpath", '/html/body/div[1]/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/form/div[5]/div[2]/div/input')
-        rellenar_contrasenna2.send_keys(contrasena_random)
+            rellenar_contrasenna= web.find_element(
+                "xpath", '/html/body/div[1]/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/form/div[4]/div[2]/div/input')
+            rellenar_contrasenna.send_keys(contrasena_random)
 
-        # Boton de registrar
-        WebDriverWait(web, 30).until(EC.element_to_be_clickable(
-        (By.XPATH, "/html/body/div[1]/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/form/button[2]"))).click() 
+            rellenar_contrasenna2= web.find_element(
+                "xpath", '/html/body/div[1]/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/form/div[5]/div[2]/div/input')
+            rellenar_contrasenna2.send_keys(contrasena_random)
 
-        # Boton de enviar codigo
-        WebDriverWait(web, 30).until(EC.element_to_be_clickable(
-        (By.XPATH, "/html/body/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/form/div[2]/div[2]/div/div/button"))).click() 
+            # Boton de registrar
+            WebDriverWait(web, 30).until(EC.element_to_be_clickable(
+            (By.XPATH, "/html/body/div[1]/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/form/button[2]"))).click() 
 
-        time.sleep(0.8) 
+            # Boton de enviar codigo
+            WebDriverWait(web, 30).until(EC.element_to_be_clickable(
+            (By.XPATH, "/html/body/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/div/form/div[2]/div[2]/div/div/button"))).click() 
+
+            time.sleep(0.8) 
+        except:
+            print ("Element is not clickable, realizando nuevo intento")
 
 jodiendo_future(5000)
