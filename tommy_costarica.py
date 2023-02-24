@@ -37,14 +37,17 @@ def jodiendo_tommy_costa(numero, cantidadArticulos):
             metros_random + " metros de " + random.choice(direccion) + random.choice(direcciones))
         ciudad_random = random.choice(ciudades)
 
-        nombre_random = random.choice(names)
-        apellido_random = random.choice(names)
+        nombre_random = random.choice(nombres)
+        apellido_random = random.choice(apellidos)
 
         nombre_usuario_random = random.choice(
             nombres) + str(random.randrange(999))
+        
         contrasena_random = random.choice(nombres) + str(random.randrange(9999))
         correo_falso = nombre_usuario_random + random.choice(["@gmail.com", "@yahoo.es", "@hotmail.com", "@celda44.com",
                                                               "@celda32.com", "@patazos2023.com", "@laputaquelopario.universidadfalsadesumadre.cr"])
+        
+        correo_falso = correo_falso.replace(" ","")
         codigo_postal_random = random.randrange(90000) + 10000
         telefono_random = random.randrange(90000000) + 10000000
         fecha_nacimiento_random = random.randrange(900000000) + 10000000
