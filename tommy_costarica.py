@@ -129,6 +129,8 @@ def jodiendo_tommy_costa(numero, cantidadArticulos):
             jodiendo_tommy_costa(numero, cantidadArticulos)
           
         time.sleep(0.4)
+
+       
         #Boton de carrito para pagar
         WebDriverWait(web, 30).until(EC.element_to_be_clickable(
         (By.XPATH, "/html/body/div[1]/div[2]/div[3]/div/div[1]/a[4]/i"))).click() 
@@ -138,30 +140,44 @@ def jodiendo_tommy_costa(numero, cantidadArticulos):
         WebDriverWait(web, 30).until(EC.element_to_be_clickable(
         (By.XPATH, "/html/body/div[1]/div[10]/div/div[1]/div/div/div/form/div[3]/a"))).click()
 
-        WebDriverWait(web, 400).until(EC.element_to_be_clickable(
-            (By.XPATH, '/html/body/div[1]/div[10]/div/div/div/div[1]/form/div[2]/div[1]/fieldset/div[1]/label/div/ul/li[1]/div/div[2]/div/div/div/input[1]'))).send_keys(tarjeta_random_random)
+        #Boton de Confirmar pedido
+        WebDriverWait(web, 30).until(EC.element_to_be_clickable(
+        (By.XPATH, "/html/body/div[1]/div[10]/div/div/div[1]/div/form/div[2]/div[3]/input"))).click()
 
-        ccv_web = web.find_element(
-            "xpath", '/html/body/div[1]/div[10]/div/div/div/div[1]/form/div[2]/div[1]/fieldset/div[1]/label/div/ul/li[1]/div/div[2]/div/div/div/input[2]')
-        ccv_web.send_keys(ccv_falso_random)      
+
+        # To do validar pago con tarjeta.
+        #time.sleep(3) 
+
+        # WebDriverWait(web, 30).until(EC.element_to_be_clickable(
+        #(By.XPATH, "/html/body/div[1]/div[10]/div/div/div[1]/div/form/div[2]/div[3]/input"))).click()
+
+        #tarjeta_web = web.find_element(
+        #    "xpath", '/html/body/div/form/div/div[2]/span[1]/span[2]/div/div[2]/span/input')
+        #tarjeta_web.send_keys(tarjeta_random_random)   
+
+
+
+        #ccv_web = web.find_element(
+        #    "xpath", '/html/body/div[1]/div[10]/div/div/div/div[1]/form/div[2]/div[1]/fieldset/div[1]/label/div/ul/li[1]/div/div[2]/div/div/div/input[2]')
+        #ccv_web.send_keys(ccv_falso_random)      
  
-        fecha_dia_web = web.find_element(
-            "xpath", '/html/body/div[1]/div[10]/div/div/div/div[1]/form/div[2]/div[1]/fieldset/div[1]/label/div/ul/li[1]/div/div[2]/div/div/div/select[1]')
-        fecha_dia_web.send_keys(random.choice(mes))
+        #fecha_dia_web = web.find_element(
+        #    "xpath", '/html/body/div[1]/div[10]/div/div/div/div[1]/form/div[2]/div[1]/fieldset/div[1]/label/div/ul/li[1]/div/div[2]/div/div/div/select[1]')
+        #fecha_dia_web.send_keys(random.choice(mes))
 
-        fecha_anno_web = web.find_element(
-            "xpath", '/html/body/div[1]/div[10]/div/div/div/div[1]/form/div[2]/div[1]/fieldset/div[1]/label/div/ul/li[1]/div/div[2]/div/div/div/select[2]')
-        fecha_anno_web.send_keys(str(random.randint(2023,2040)))
+        #fecha_anno_web = web.find_element(
+        #    "xpath", '/html/body/div[1]/div[10]/div/div/div/div[1]/form/div[2]/div[1]/fieldset/div[1]/label/div/ul/li[1]/div/div[2]/div/div/div/select[2]')
+        #fecha_anno_web.send_keys(str(random.randint(2023,2040)))
 
-        radiobutton_web = web.find_element(
-            "xpath", '/html/body/div[1]/div[10]/div/div/div/div[1]/form/div[2]/div[1]/fieldset/div[2]/input')
-        fecha_anno_web.send_keys(True)
+        #radiobutton_web = web.find_element(
+        #    "xpath", '/html/body/div[1]/div[10]/div/div/div/div[1]/form/div[2]/div[1]/fieldset/div[2]/input')
+        #fecha_anno_web.send_keys(True)
 
         # Boton agregar canasta
-        WebDriverWait(web, 30).until(EC.element_to_be_clickable(
-        (By.XPATH, "/html/body/div[1]/div[10]/div/div/div/div[1]/form/div[2]/div[1]/div[2]/input"))).click() 
+        #WebDriverWait(web, 30).until(EC.element_to_be_clickable(
+        #(By.XPATH, "/html/body/div[1]/div[10]/div/div/div/div[1]/form/div[2]/div[1]/div[2]/input"))).click() 
 
-        time.sleep(1) 
+       # time.sleep(1) 
 
 
 jodiendo_tommy_costa(5000,1)
