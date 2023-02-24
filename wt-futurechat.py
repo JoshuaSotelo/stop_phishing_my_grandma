@@ -35,91 +35,93 @@ def jodiendo_future_chat(numero, cantidadArticulos):
     while numero >= contador:
         contador += 1
         print(contador)
-        # Datos procesados random.
-        nombre_random = random.choice(names)
-        nombre_usuario_random = random.choice(
-            names) + str(random.randrange(999))
-        correo_falso = nombre_usuario_random + random.choice(["@gmail.com", "@yahoo.es", "@hotmail.com", "@celda44.com",
-                                                              "@celda32.com", "@patazos2023.com", "@laputaquelopario.universidadfalsadesumadre.cr"])
+        try:
+            # Datos procesados random.
+            nombre_random = random.choice(names)
+            nombre_usuario_random = random.choice(
+                names) + str(random.randrange(999))
+            correo_falso = nombre_usuario_random + random.choice(["@gmail.com", "@yahoo.es", "@hotmail.com", "@celda44.com",
+                                                                "@celda32.com", "@patazos2023.com", "@laputaquelopario.universidadfalsadesumadre.cr"])
+        
+            # uso esas sumas para asegurarme la cantidad de digitos en el numero random de los inputs
+            # Inicia el push
+            web = webdriver.Chrome()
+
+            # Formulario de registro
+            web.get(sitio)
+            time.sleep(3)      
+
+            memberId = random.randrange(90000000) + 10000000
+
+            rellenar_member_id = web.find_element(
+                "xpath", '/html/body/div/div/div/div/div/div[2]/form/div[1]/div/div/input')
+            rellenar_member_id.send_keys(memberId)
+
+            submit_question = web.find_element(
+                "xpath", '/html/body/div/div/div/div/div/div[2]/form/div[2]/div/div/input')
+            submit_question.send_keys(nombre_random)
+
+            # Boton de Start
+            WebDriverWait(web, 30).until(EC.element_to_be_clickable(
+            (By.XPATH, "/html/body/div/div/div/div/div/div[2]/form/div[3]/div/input"))).click() 
+
+            time.sleep(2)  
+            mesagge = web.find_element(
+                "xpath", '/html/body/div/div/div/div[2]/div/div[1]/div/textarea')
+            mesagge.send_keys('Hi') ## -- Personalizar mensajes random
+
+            # Boton Send
+            WebDriverWait(web, 30).until(EC.element_to_be_clickable(
+            (By.XPATH, "/html/body/div/div/div/div[2]/div/div[2]/button"))).click()
+
+            time.sleep(1)          
+
+            mesagge = web.find_element(
+                "xpath", '/html/body/div/div/div/div[2]/div/div[1]/div/textarea')
+            mesagge.send_keys(random.choice(comentarios)) ## -- Personalizar mensajes random
+
+            # Boton Send
+            WebDriverWait(web, 30).until(EC.element_to_be_clickable(
+            (By.XPATH, "/html/body/div/div/div/div[2]/div/div[2]/button"))).click()    
+
+            time.sleep(1)   
+
+            mesagge = web.find_element(
+                "xpath", '/html/body/div/div/div/div[2]/div/div[1]/div/textarea')
+            mesagge.send_keys(random.choice(comentarios)) ## -- Personalizar mensajes random
+
+            # Boton Send
+            WebDriverWait(web, 30).until(EC.element_to_be_clickable(
+            (By.XPATH, "/html/body/div/div/div/div[2]/div/div[2]/button"))).click()    
+
+            time.sleep(1)    
     
-        # uso esas sumas para asegurarme la cantidad de digitos en el numero random de los inputs
-        # Inicia el push
-        web = webdriver.Chrome()
-
-        # Formulario de registro
-        web.get(sitio)
-        time.sleep(3)      
-
-        memberId = random.randrange(90000000) + 10000000
-
-        rellenar_member_id = web.find_element(
-            "xpath", '/html/body/div/div/div/div/div/div[2]/form/div[1]/div/div/input')
-        rellenar_member_id.send_keys(memberId)
-
-        submit_question = web.find_element(
-            "xpath", '/html/body/div/div/div/div/div/div[2]/form/div[2]/div/div/input')
-        submit_question.send_keys(nombre_random)
-
-        # Boton de Start
-        WebDriverWait(web, 30).until(EC.element_to_be_clickable(
-        (By.XPATH, "/html/body/div/div/div/div/div/div[2]/form/div[3]/div/input"))).click() 
-
-        time.sleep(2)  
-        mesagge = web.find_element(
-            "xpath", '/html/body/div/div/div/div[2]/div/div[1]/div/textarea')
-        mesagge.send_keys('Hi') ## -- Personalizar mensajes random
-
-        # Boton Send
-        WebDriverWait(web, 30).until(EC.element_to_be_clickable(
-        (By.XPATH, "/html/body/div/div/div/div[2]/div/div[2]/button"))).click()
-
-        time.sleep(1)          
-
-        mesagge = web.find_element(
-            "xpath", '/html/body/div/div/div/div[2]/div/div[1]/div/textarea')
-        mesagge.send_keys(random.choice(comentarios)) ## -- Personalizar mensajes random
-
-        # Boton Send
-        WebDriverWait(web, 30).until(EC.element_to_be_clickable(
-        (By.XPATH, "/html/body/div/div/div/div[2]/div/div[2]/button"))).click()    
-
-        time.sleep(1)   
-
-        mesagge = web.find_element(
-            "xpath", '/html/body/div/div/div/div[2]/div/div[1]/div/textarea')
-        mesagge.send_keys(random.choice(comentarios)) ## -- Personalizar mensajes random
-
-        # Boton Send
-        WebDriverWait(web, 30).until(EC.element_to_be_clickable(
-        (By.XPATH, "/html/body/div/div/div/div[2]/div/div[2]/button"))).click()    
-
-        time.sleep(1)    
- 
-        # Boton Cerrar
-        WebDriverWait(web, 30).until(EC.element_to_be_clickable(
-        (By.XPATH, "/html/body/div/div/header/span[2]/button"))).click() 
-   
-        correo = web.find_element(
-            "xpath", '/html/body/div[1]/div/div[2]/div/form/input[1]')
-        correo.send_keys(correo_falso)
-      
-        # Boton Leave
-        WebDriverWait(web, 30).until(EC.element_to_be_clickable(
-        (By.XPATH, "/html/body/div[1]/div/div[2]/div/form/input[2]"))).click() 
-
+            # Boton Cerrar
+            WebDriverWait(web, 30).until(EC.element_to_be_clickable(
+            (By.XPATH, "/html/body/div/div/header/span[2]/button"))).click() 
     
-        #Comentarios, To Do, investigar ingresar al iframe
+            correo = web.find_element(
+                "xpath", '/html/body/div[1]/div/div[2]/div/form/input[1]')
+            correo.send_keys(correo_falso)
+        
+            # Boton Leave
+            WebDriverWait(web, 30).until(EC.element_to_be_clickable(
+            (By.XPATH, "/html/body/div[1]/div/div[2]/div/form/input[2]"))).click() 
 
-        #comments = web.find_element(
-        #    "xpath", '/html/body/div[3]/div/form/div[3]/textarea')
-        #comments.send_keys('Hi') ## -- Personalizar mensajes random  
+        
+            #Comentarios, To Do, investigar ingresar al iframe
+
+            #comments = web.find_element(
+            #    "xpath", '/html/body/div[3]/div/form/div[3]/textarea')
+            #comments.send_keys('Hi') ## -- Personalizar mensajes random  
 
 
-        # Boton Subit comentario
-       # WebDriverWait(web, 30).until(EC.element_to_be_clickable(
-        #(By.XPATH, "/html/body/div[3]/div/form/div[4]/button"))).click()   
-    
-        time.sleep(1) 
-
+            # Boton Subit comentario
+            # WebDriverWait(web, 30).until(EC.element_to_be_clickable(
+            #(By.XPATH, "/html/body/div[3]/div/form/div[4]/button"))).click()   
+        
+            time.sleep(1) 
+        except:
+            print ("Element is not clickable, realizando nuevo intento")
 
 jodiendo_future_chat(5000,1)
