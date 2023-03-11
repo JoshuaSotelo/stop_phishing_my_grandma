@@ -54,3 +54,7 @@ Para contribuir al proyecto es preferible que utilicemos el siguiente workflow
 8. Una vez tu merge-request sea aprovado elimina la rama que creaste
 
 Recomiendo seguir este workflow para que el proyecto sea más seguro.
+
+
+#!
+El código que se encuentra aquí es proporcionado con fines educativos y se proporciona "tal cual" sin garantía de ningún tipo, expresa o implícita. El o los autores no asumen ninguna responsabilidad por el uso que se le dé al código aquí contenido. Cada usuario es responsable de usar este código de manera discrecional y bajo su propia responsabilidad. El uso indebido del código y sus consecuencias serán responsabilidad exclusiva del usuario. Si decide utilizar el código, acepta estos términos y condiciones.
